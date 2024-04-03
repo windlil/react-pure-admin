@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Layout, Menu, type MenuProps } from "antd";
 import { BASIC_CONFIG } from "@/config/base";
+import routes from "@/router/routes";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -39,8 +40,8 @@ const LayoutSider: FC = () => {
    * event: click
    * @param param0 MenuItem唯一值
    */
-  const handleMenuItemClick: MenuProps['onClick'] = ({ key }) => {
-    console.log(key)
+  const handleMenuItemClick: MenuProps["onClick"] = ({ key }) => {
+    console.log(key);
   };
 
   return (

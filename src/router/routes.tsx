@@ -11,9 +11,9 @@ const routes: FullRouteObject[] = [
     element: lazyCreateElement(() => import("@/App")),
     children: [
       {
-        index: true,
         path: "dashboard",
         title: "分析页",
+        element: lazyCreateElement(() => import('@/views/dashboard/index'))
       },
       {
         path: "access",

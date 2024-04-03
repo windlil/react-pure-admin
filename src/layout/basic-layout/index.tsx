@@ -1,6 +1,7 @@
 import { type FC } from "react";
 import { Layout } from "antd";
 import LayoutSider from "../components/sider";
+import { Outlet } from "react-router-dom";
 
 const BasicLayout: FC = () => {
   const { Header, Content, Footer } = Layout;
@@ -15,7 +16,9 @@ const BasicLayout: FC = () => {
       <LayoutSider />
       <Layout>
         <Header>header</Header>
-        <Content>content</Content>
+        <Content>
+          <Outlet />
+        </Content>
         <Footer>footer</Footer>
       </Layout>
     </Layout>
