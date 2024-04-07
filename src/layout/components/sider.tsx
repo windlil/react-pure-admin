@@ -2,46 +2,62 @@ import { FC } from "react";
 import { Layout, Menu, type MenuProps } from "antd";
 import { BASIC_CONFIG } from "@/config/base";
 import routes from "@/router/routes";
+import { FullRouteObject } from "@/types/route";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon?: React.ReactNode,
-  children?: MenuItem[]
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  } as MenuItem;
-}
+/**
+ * 用于映射路由表为菜单的方法
+ * @param routes
+ * @returns
+ */
+const setRouteList = (routes: FullRouteObject[]): MenuItem[] => {
+  return routes.map((c) => {
+    return {
+      key: c.path?.startsWith("/") ? c.path : `/${c.path}`,
+      label: c.title,
+      children: c.children ? setRouteList(c.children) : null,
+    };
+  });
+};
+
+/**
+ * 菜单列表
+ */
+const routeList: MenuItem[] = setRouteList(
+  routes[0].children as FullRouteObject[]
+);
+
+/**
+ * 获取当前页面展开项ID
+ * @param path 当前页面地址
+ * @returns
+ */
+const getCurrentMenuOpenKey = (path: string) => {
+  const pathArr = path.split("/").splice(1);
+  if (pathArr.length >= 2) {
+    return ["/", `/${pathArr[0]}`];
+  } else {
+    return ["/"];
+  }
+};
 
 const LayoutSider: FC = () => {
   const { Sider } = Layout;
-  const items: MenuItem[] = [
-    getItem("Option 1", "1"),
-    getItem("Option 2", "2"),
-    getItem("User", "sub1", "", [
-      getItem("Tom", "3"),
-      getItem("Bill", "4"),
-      getItem("Alex", "5"),
-    ]),
-    getItem("Team", "sub2", "", [
-      getItem("Team 1", "6"),
-      getItem("Team 2", "8"),
-    ]),
-    getItem("Files", "9"),
-  ];
+  const Navigate = useNavigate();
+  const Location = useLocation();
 
+  let { pathname } = Location;
+  const getPathName = () => {
+    return pathname === "/" ? routeList[0]?.key?.toString() ?? '' : pathname;
+  };
   /**
-   * event: click
+   * 点击菜单的每一项 跳转到对应页
    * @param param0 MenuItem唯一值
    */
   const handleMenuItemClick: MenuProps["onClick"] = ({ key }) => {
-    console.log(key);
+    Navigate(key);
   };
 
   return (
@@ -51,9 +67,10 @@ const LayoutSider: FC = () => {
       </div>
       <Menu
         theme="dark"
-        defaultSelectedKeys={["1"]}
+        defaultOpenKeys={getCurrentMenuOpenKey(pathname)}
+        defaultSelectedKeys={[getPathName()]}
         mode="inline"
-        items={items}
+        items={routeList}
         onClick={handleMenuItemClick}
       />
     </Sider>

@@ -18,6 +18,18 @@ const routes: FullRouteObject[] = [
       {
         path: "access",
         title: "权限模块",
+        children: [
+          {
+            path: '/access/admin',
+            title: '管理员',
+            element: lazyCreateElement(() => import('@/views/access/admin'))
+          },
+          {
+            path: '/access/user',
+            title: '普通用户',
+            element: lazyCreateElement(() => import('@/views/access/user'))
+          }
+        ]
       },
     ],
   },
