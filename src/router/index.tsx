@@ -1,15 +1,10 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import routes from "./routes";
-import { Suspense } from "react";
 
-const router = createBrowserRouter(routes)
+const router = createBrowserRouter(routes);
 
 const BrowserRouter = () => {
-  return (
-    <Suspense fallback="">
-      <RouterProvider router={router}></RouterProvider>
-    </Suspense>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 };
 
 export default BrowserRouter;

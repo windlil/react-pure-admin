@@ -19,3 +19,7 @@ ul, li {
 a {
   text-decoration: none;
 }
+
+.ant-spin-dot-item {
+  background-color: #3b8cfd !important;
+}

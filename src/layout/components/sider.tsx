@@ -18,6 +18,7 @@ const setRouteList = (routes: FullRouteObject[]): MenuItem[] => {
       key: c.path?.startsWith("/") ? c.path : `/${c.path}`,
       label: c.title,
       children: c.children ? setRouteList(c.children) : null,
+      icon: c.icon ?? null
     };
   });
 };
@@ -50,7 +51,7 @@ const LayoutSider: FC = () => {
 
   let { pathname } = Location;
   const getPathName = () => {
-    return pathname === "/" ? routeList[0]?.key?.toString() ?? '' : pathname;
+    return pathname === "/" ? routeList[0]?.key?.toString() ?? "" : pathname;
   };
   /**
    * 点击菜单的每一项 跳转到对应页
@@ -61,12 +62,11 @@ const LayoutSider: FC = () => {
   };
 
   return (
-    <Sider>
-      <div className="flex ml-6 align-center items-center text-white w-full h-20 text-2xl font-bold ">
+    <Sider style={{backgroundColor: '#fff', userSelect: 'none'}}>
+      <div className="flex ml-6 align-center items-center text-[#5b5b5b] w-full h-20 text-2xl font-bold ">
         {BASIC_CONFIG.TITLE}
       </div>
       <Menu
-        theme="dark"
         defaultOpenKeys={getCurrentMenuOpenKey(pathname)}
         defaultSelectedKeys={[getPathName()]}
         mode="inline"
