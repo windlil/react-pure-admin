@@ -3,7 +3,12 @@ import LoginForm from "@/components/login-form";
 
 const Login: FC = () => {
   return (
-    <div className="flex justify-center items-center w-full h-full bg-[#f0f2f5]">
+    <div
+      style={{
+        backgroundImage: "linear-gradient(to top, #fff1eb 0%, #e3ebff 100%)",
+      }}
+      className="flex justify-center items-center w-full h-full"
+    >
       <LoginForm />
     </div>
   );

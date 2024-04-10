@@ -25,7 +25,7 @@ const routes: FullRouteObject[] = [
       },
       {
         path: "access",
-        title: "权限模块",
+        title: "权限示例",
         icon: <ApartmentOutlined />,
 
         children: [
@@ -52,6 +52,27 @@ const routes: FullRouteObject[] = [
             element: lazyCreateElement(() => import("@/views/list/card-list")),
           },
         ],
+      },
+      {
+        path: 'result',
+        title: '异常页',
+        children: [
+          {
+            path: '/result/403',
+            title: '403',
+            element: lazyCreateElement(() => import('@/views/result/403'))
+          },
+          {
+            path: '/result/404',
+            title: '404',
+            element: lazyCreateElement(() => import('@/views/result/404'))
+          },
+          {
+            path: '/result/500',
+            title: '500',
+            element: lazyCreateElement(() => import('@/views/result/500'))
+          }
+        ]
       },
       {
         path: "account",

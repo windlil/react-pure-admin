@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { Layout, Menu, type MenuProps } from "antd";
 import { BASIC_CONFIG } from "@/config/base";
 import routes from "@/router/routes";
@@ -18,7 +18,7 @@ const setRouteList = (routes: FullRouteObject[]): MenuItem[] => {
       key: c.path?.startsWith("/") ? c.path : `/${c.path}`,
       label: c.title,
       children: c.children ? setRouteList(c.children) : null,
-      icon: c.icon ?? null
+      icon: c.icon ?? null,
     };
   });
 };
@@ -50,9 +50,15 @@ const LayoutSider: FC = () => {
   const Location = useLocation();
 
   let { pathname } = Location;
+
   const getPathName = () => {
     return pathname === "/" ? routeList[0]?.key?.toString() ?? "" : pathname;
   };
+
+  const currentSelectedKey = useMemo(() => {
+    console.log(getPathName(), "刷新了");
+    return getPathName();
+  }, [pathname]);
   /**
    * 点击菜单的每一项 跳转到对应页
    * @param param0 MenuItem唯一值
@@ -62,13 +68,13 @@ const LayoutSider: FC = () => {
   };
 
   return (
-    <Sider style={{backgroundColor: '#fff', userSelect: 'none'}}>
+    <Sider style={{ backgroundColor: "#fff", userSelect: "none" }}>
       <div className="flex ml-6 align-center items-center text-[#5b5b5b] w-full h-20 text-2xl font-bold ">
         {BASIC_CONFIG.TITLE}
       </div>
       <Menu
         defaultOpenKeys={getCurrentMenuOpenKey(pathname)}
-        defaultSelectedKeys={[getPathName()]}
+        selectedKeys={[currentSelectedKey]}
         mode="inline"
         items={routeList}
         onClick={handleMenuItemClick}

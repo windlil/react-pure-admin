@@ -16,9 +16,9 @@ const App = () => {
 
   useEffect(() => {
     // token不存在跳转到登录页面
-    if (!token) {
-      return navigate("/login");
-    }
+    // if (!token) {
+    //   return navigate("/login");
+    // }
     // 重定向
     if (pathname === "/") navigate(firstAppChildrenPath);
   }, [pathname, navigate, firstAppChildrenPath, token]);

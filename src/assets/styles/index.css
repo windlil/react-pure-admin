@@ -23,3 +23,19 @@ a {
 .ant-spin-dot-item {
   background-color: #3b8cfd !important;
 }
+
+.code {
+  margin: 0 0.5rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  background-color: rgb(235, 237, 241);
+  color: rgb(176, 184, 196);
+}
+
+.ant-spin-text {
+  margin-top: 8px;
+  color: #767676 !important;
+  letter-spacing: 2px;
+}

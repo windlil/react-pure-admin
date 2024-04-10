@@ -11,13 +11,16 @@ const ButtonAccess: FC = () => {
   const AuthButton2 = createAuthComponent(Button, "access:button2");
 
   return (
-    <div>
+    <div className="select-none">
       <div className="">
         当前用户拥有的权限：
         <span className="text-blue-400 font-bold mr-4">{role}</span>
       </div>
       <div className="my-2">
-        <div>使用方法 useIsAuth 进行按钮控制</div>
+        <div>
+          使用方法 useAuth 进行按钮控制
+          <span className="code">/src/hooks/useAuth.ts</span>
+        </div>
         <Row gutter={16} className="mt-3">
           <Col className="gutter-row" span={2}>
             {useAuth("access:button1") && <Button>普通用户</Button>}
@@ -32,7 +35,10 @@ const ButtonAccess: FC = () => {
       </div>
       <Divider style={{ backgroundColor: "#f2f2f2" }}></Divider>
       <div className="my-2">
-        <div>使用权限组件 Auth 进行按钮控制</div>
+        <div>
+          使用权限组件 Auth 进行按钮控制
+          <span className="code">/src/components/auth/index.tsx</span>
+        </div>
         <Row gutter={16} className="mt-3">
           <Col className="gutter-row" span={2}>
             <Auth authCode="access:button1">
@@ -49,7 +55,11 @@ const ButtonAccess: FC = () => {
       </div>
       <Divider style={{ backgroundColor: "#f2f2f2" }}></Divider>
       <div className="my-2">
-        <div>使用高阶自定义权限组件 AuthButton 进行按钮控制</div>
+        <div>
+          使用高阶自定义权限组件 AuthButton 进行按钮控制
+          <span className="code">/src/hooks/useCreateAuthComponent.ts</span>
+        </div>
+
         <Row gutter={16} className="mt-3">
           <Col className="gutter-row" span={2}>
             <AuthButton1>普通用户</AuthButton1>

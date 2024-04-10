@@ -83,9 +83,9 @@ const LoginForm: FC = () => {
       {isShowLoading ? (
         <Spin
           fullscreen
-          style={{ backgroundColor: "#3737379e" }}
+          style={{ backgroundColor: "#fff" }}
           size="large"
-          tip="Loading"
+          tip="正在加载资源"
         ></Spin>
       ) : null}
       <div
@@ -95,6 +95,8 @@ const LoginForm: FC = () => {
           "border",
           "bg-slate-50",
           "select-none",
+          "rounded-xl",
+          "shadow-sm"
         ].join(" ")}
       >
         <div className="text-center text-2xl mb-8">
@@ -128,7 +130,7 @@ const LoginForm: FC = () => {
           </Form.Item>
           <Form.Item<FieldType> name="autoLogin" valuePropName="checked">
             <div className="flex w-full justify-between items-center">
-              <Checkbox>自动登录</Checkbox>
+              <Checkbox>记住密码</Checkbox>
               <Button type="link">忘记密码</Button>
             </div>
           </Form.Item>
