@@ -69,7 +69,7 @@ const LayoutSider: FC = () => {
 
   return (
     <Sider style={{ backgroundColor: "#fff", userSelect: "none" }}>
-      <div className="flex ml-6 align-center items-center text-[#5b5b5b] w-full h-20 text-2xl font-bold ">
+      <div className="flex ml-6 align-center items-center text-[#64affa] w-full h-20 text-2xl font-bold ">
         {BASIC_CONFIG.TITLE}
       </div>
       <Menu

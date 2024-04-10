@@ -26,7 +26,13 @@ const App = () => {
   return (
     <>
       <ConfigProvider>
-        <div className="w-full h-full p-5 bg-[#e0e4e7]">
+        <div
+          className="w-full h-full p-5 "
+          style={{
+            backgroundImage:
+              "linear-gradient(to top, #eaeaea 0%, #e3ebff 100%)",
+          }}
+        >
           <BasicLayout />
         </div>
       </ConfigProvider>

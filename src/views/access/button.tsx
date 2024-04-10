@@ -11,7 +11,7 @@ const ButtonAccess: FC = () => {
   const AuthButton2 = createAuthComponent(Button, "access:button2");
 
   return (
-    <div className="select-none">
+    <div className="content h-full select-none">
       <div className="">
         当前用户拥有的权限：
         <span className="text-blue-400 font-bold mr-4">{role}</span>

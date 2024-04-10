@@ -3,11 +3,11 @@ import { Layout } from "antd";
 import LayoutSider from "../components/sider";
 import { Outlet } from "react-router-dom";
 import Header from "../components/header";
-import { Spin } from 'antd'
+import { Spin } from "antd";
 
 const BasicLayout: FC = () => {
   const { Content } = Layout;
-  const [isShowLoading, setIsShowLoading] = useState(true)
+  const [isShowLoading, setIsShowLoading] = useState(true);
 
   const layoutStyle = {
     width: "100%",
@@ -18,9 +18,9 @@ const BasicLayout: FC = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      setIsShowLoading(false)
-    }, 1000)
-  }, [])
+      setIsShowLoading(false);
+    }, 1000);
+  }, []);
   return (
     <>
       {isShowLoading ? (
@@ -31,12 +31,12 @@ const BasicLayout: FC = () => {
           tip="正在加载资源"
         ></Spin>
       ) : null}
-      <Layout style={layoutStyle}>
+      <Layout style={layoutStyle} className="shadow-md">
         <LayoutSider />
         <Layout>
           <Header />
-          <Content className="p-4 bg-[#f7fafc]">
-            <div className="bg-white h-full p-4 rounded-md">
+          <Content className="p-4 bg-[#f5fcfc] overflow-y-scroll scrollbar">
+            <div className="h-full">
               <Outlet />
             </div>
           </Content>
